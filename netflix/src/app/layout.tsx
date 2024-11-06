@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "@/styles/globalTheme.css";
 
-export const metadat: Metadata = {
+export const metadata: Metadata = {
   title: "netflix",
   description: "헤헤",
 };
