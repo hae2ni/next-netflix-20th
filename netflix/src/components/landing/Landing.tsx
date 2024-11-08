@@ -1,7 +1,10 @@
 import Lottie from "lottie-react";
 import netflixLanding from "./json/netflixLanding.json";
+import { useRouter } from "next/router";
 
 export default function Landing() {
+  const router = useRouter();
+
   return (
     <div
       style={{
@@ -16,6 +19,7 @@ export default function Landing() {
         animationData={netflixLanding}
         style={{ maxWidth: "100%" }}
         loop={false}
+        onComplete={() => router.push("/home")}
       />
     </div>
   );
