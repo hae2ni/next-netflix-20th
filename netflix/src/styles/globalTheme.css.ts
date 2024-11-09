@@ -1,4 +1,4 @@
-import { createGlobalTheme, globalFontFace } from "@vanilla-extract/css";
+import { createGlobalTheme, globalFontFace, style } from "@vanilla-extract/css";
 
 const sfDisplay = "sfDisplay";
 
@@ -22,4 +22,11 @@ export const global = createGlobalTheme(":root", {
     body: "SF_Display",
     menu: "sfDisplay",
   },
+});
+
+export const page = style({
+  display: 'flex',
+  justifyContent: 'center',
+  height: '100vh',
+  backgroundColor: '#000000',
 });
