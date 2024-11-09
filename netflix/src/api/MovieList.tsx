@@ -1,20 +1,35 @@
-import axios from 'axios';
+import { instance } from './instance';
 
-const API_KEY = 'your_tmdb_api_key';
-const BASE_URL = 'https://api.themoviedb.org/3';
+interface Movie {
+    id: number;
+    title: string;
+    poster_path: string;
+}
 
-export const fetchMovies = async () => {
-    try {
-        const response = await axios.get(`${BASE_URL}/movie/popular`, {
-            params: {
-                api_key: API_KEY,
-                language: 'en-US',
-                page: 1,
-            },
-        });
-        return response.data.results; // 영화 리스트 반환
-    } catch (error) {
-        console.error('영화 목록 불러오기 실패:', error);
-        throw error;
-    }
+interface FetchMoviesResponse {
+    results: Movie[];
+}
+
+interface TV {
+    id: number;
+    title: string;
+    poster_path: string;
+}
+
+interface FetchTVResponse {
+    results: TV[];
+}
+
+export const fetchMovies = async (): Promise<Movie[]> => {
+    const response: FetchMoviesResponse = await instance.get(
+        `/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+    );
+    return response.results;
+};
+
+export const fetchTV = async (): Promise<TV[]> => {
+    const response: FetchTVResponse = await instance.get(
+        `/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+    );
+    return response.results;
 };

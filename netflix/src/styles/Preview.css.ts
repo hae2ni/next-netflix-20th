@@ -13,6 +13,7 @@ export const title = style({
     fontSize: '26.75px',
     fontWeight: '700',
     color: '#FFFFFF',
+    marginLeft: '7px',
 });
 
 export const contents = style({
@@ -28,4 +29,14 @@ export const element = style({
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: '7px',
+});
+
+export const tvItem = style({
+    marginLeft: '7px',
+});
+
+export const roundPoster = style({
+    width: '102px',
+    height: '102px',
+    borderRadius: '50%',
 });

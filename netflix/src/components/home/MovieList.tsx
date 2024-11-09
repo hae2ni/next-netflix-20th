@@ -1,14 +1,48 @@
 "use client";
 
+import { useEffect, useState } from 'react';
+import { fetchMovies } from '@/api/MovieList';
 import * as styles from '@/styles/MovieList.css';
 
+interface Movie {
+    id: number;
+    title: string;
+    poster_path: string;
+}
+
 const MovieList = () => {
+    const [movies, setMovies] = useState<Movie[]>([]);
+
+
+    useEffect(() => {
+        const loadMovies = async () => {
+            try {
+                const movieList = await fetchMovies();
+                setMovies(movieList);
+            } catch (error) {
+                console.error("영화 리스트 로드 실패", error);
+            }
+        };
+
+        loadMovies();
+    }, []);
 
     return (
         <div className={styles.container}>
             <p className={styles.title}>Continue Watching for Emenalo</p>
             <div className={styles.contents}>
-                {/* 여기에 영화 포스터 사진 리스트 띄워주기 */}
+            {movies.length > 0 ? (
+                    movies.map((movie) => (
+                        <div key={movie.id} className={styles.movieItem}>
+                            <img
+                                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                                className={styles.squarePoster}
+                            />
+                        </div>
+                    ))
+                ) : (
+                    <p>Loading movies...</p>
+                )}
             </div>
         </div>
     );
