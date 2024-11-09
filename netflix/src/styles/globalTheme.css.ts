@@ -30,3 +30,8 @@ export const page = style({
   height: '100vh',
   backgroundColor: '#000000',
 });
+
+export const wrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+});
