@@ -1,6 +1,3 @@
-"use client";
-
-import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import logo from '../../../public/svgs/netflix_logo.svg';

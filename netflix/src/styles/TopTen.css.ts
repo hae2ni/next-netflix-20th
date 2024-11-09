@@ -3,6 +3,10 @@ import { style } from '@vanilla-extract/css';
 export const container = style({
     display: 'flex',
     flexDirection: 'column',
+    height: '435px',
+});
+
+export const poster = style({
     height: '415px',
 });
 

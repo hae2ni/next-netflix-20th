@@ -10,16 +10,6 @@ interface FetchMoviesResponse {
     results: Movie[];
 }
 
-interface TV {
-    id: number;
-    title: string;
-    poster_path: string;
-}
-
-interface FetchTVResponse {
-    results: TV[];
-}
-
 export const fetchMovies = async (): Promise<Movie[]> => {
     const response: FetchMoviesResponse = await instance.get(
         `/discover/movie?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
@@ -27,9 +17,30 @@ export const fetchMovies = async (): Promise<Movie[]> => {
     return response.results;
 };
 
-export const fetchTV = async (): Promise<TV[]> => {
-    const response: FetchTVResponse = await instance.get(
+export const fetchTV = async (): Promise<Movie[]> => {
+    const response: FetchMoviesResponse = await instance.get(
         `/discover/tv?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+    );
+    return response.results;
+};
+
+export const fetchPopular = async (): Promise<Movie[]> => {
+    const response: FetchMoviesResponse = await instance.get(
+        `/movie/popular?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+    );
+    return response.results;
+};
+
+export const fetchTrending = async (): Promise<Movie[]> => {
+    const response: FetchMoviesResponse = await instance.get(
+        `/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
+    );
+    return response.results;
+};
+
+export const fetchTopRated = async (): Promise<Movie[]> => {
+    const response: FetchMoviesResponse = await instance.get(
+        `/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_API_KEY}&language=en-US&page=1`
     );
     return response.results;
 };

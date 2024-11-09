@@ -1,5 +1,3 @@
-"use client";
-
 import Image from 'next/image';
 import myList from '../../../public/svgs/home/myListIcon.svg';
 import info from '../../../public/svgs/home/infoIcon.svg';

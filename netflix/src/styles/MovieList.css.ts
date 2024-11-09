@@ -5,6 +5,7 @@ export const container = style({
     flexDirection: 'column',
     justifyContent: 'center',
     alignContent: 'flex-start',
+    overflow: "hidden",
 });
 
 export const title = style({
@@ -13,14 +14,23 @@ export const title = style({
     fontSize: '20.92px',
     fontWeight: '700',
     color: '#FFFFFF',
-    marginLeft: '7px',
+    marginLeft: '16px',
 });
 
 export const contents = style({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '259px',
+    width: '375px',
+    overflowX: 'scroll',
+    overflowY: 'hidden',
+    whiteSpace: 'nowrap',
+    scrollbarWidth: 'none', // Firefox
+    msOverflowStyle: 'none', // IE 10+
+    '::-webkit-scrollbar': {
+        display: 'none', // Chrome, Safari
+    },
+    marginLeft: '11px',
 });
 
 export const element = style({

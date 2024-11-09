@@ -4,7 +4,6 @@ export const container = style({
     display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
-    marginTop: '30px',
 });
 
 export const contents = style({
