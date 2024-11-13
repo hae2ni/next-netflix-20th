@@ -3,18 +3,15 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
   display: "flex",
   alignItems: "center",
+  width: "100%",
   gap: "7px",
   backgroundColor: "#424242",
+
+  color: "white",
 });
 
 export const textplaycontainer = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
-});
-
-export const contentposter = style({
-  width: "146px",
-  height: "78px",
-  borderRadius: "2px",
 });

@@ -10,7 +10,7 @@ export const Content = ({ title, poster }) => {
 
   return (
     <li className={styles.container}>
-      <Image alt="포스터" width={146} height={76} src={imageUrl} />
+      <Image alt="포스터" width={200} height={76} src={imageUrl} />
       <span className={styles.textplaycontainer}>
         {title}
         <Image src={playIcon} alt="재생" />
