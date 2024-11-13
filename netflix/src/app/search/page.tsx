@@ -1,9 +1,12 @@
-import NavBar from '@/components/common/navBar'
+import NavBar from "@/components/common/navBar";
+import { SearchBar } from "@/components/search/SearchBar";
 
 export default function Search() {
-    return (
-        <div>
-            <NavBar />
-        </div>
-    )
+  return (
+    <div>
+      <SearchBar />
+
+      <NavBar />
+    </div>
+  );
 }
