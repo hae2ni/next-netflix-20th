@@ -28,7 +28,7 @@ export const ContentList: React.FC = () => {
 
   return (
     <>
-      <p>Searches</p>
+      <p className={styles.topSearches}>Top Searches</p>
       {movies.map((movie) => (
         <Content
           key={movie.id}
@@ -39,13 +39,4 @@ export const ContentList: React.FC = () => {
       <div>ContentList</div>
     </>
   );
-};
-
-export const getSearchMovies = async () => {
-  const movies = await fetchPopular();
-  return {
-    props: {
-      movies,
-    },
-  };
 };

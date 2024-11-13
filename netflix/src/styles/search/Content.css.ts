@@ -8,6 +8,9 @@ export const container = style({
   backgroundColor: "#424242",
 
   color: "white",
+  fontWeight: "400",
+  fontSize: "14,72px",
+  lineHeight: "30px",
 });
 
 export const textplaycontainer = style({
