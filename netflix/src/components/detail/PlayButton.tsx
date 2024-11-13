@@ -1,6 +1,6 @@
 import React from "react";
-import * as styles from "@/styles/more/playButton.css";
-import playbtn from "/public/svgs/more/playbutton.svg";
+import * as styles from "@/styles/detail/playButton.css";
+import playbtn from "/public/svgs/detail/playbutton.svg";
 
 export const PlayButton = () => {
   return (
