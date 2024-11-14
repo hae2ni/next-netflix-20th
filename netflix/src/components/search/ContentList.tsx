@@ -4,12 +4,7 @@ import * as styles from "@/styles/search/contentList.css";
 import React, { useEffect, useState } from "react";
 import { Content } from "./Content";
 import Link from "next/link";
-
-interface Movie {
-  id: number;
-  title: string;
-  poster_path: string;
-}
+import { Movie } from "@/types/movieInterface";
 
 export const ContentList: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
