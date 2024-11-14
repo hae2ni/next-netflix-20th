@@ -10,4 +10,6 @@ export const container = style({
   borderRadius: "6px",
 
   backgroundColor: "#C4C4C4",
+
+  marginTop: "13px",
 });

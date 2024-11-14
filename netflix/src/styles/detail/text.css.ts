@@ -10,4 +10,7 @@ export const summary = style({
   color: "#FFFFFF",
   fontWeight: 400,
   fontSize: "11.14px",
+
+  width: "311px",
+  height: "43px",
 });
