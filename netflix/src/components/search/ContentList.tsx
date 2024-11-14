@@ -3,6 +3,7 @@ import { fetchPopular } from "@/api/MovieList";
 import * as styles from "@/styles/search/contentList.css";
 import React, { useEffect, useState } from "react";
 import { Content } from "./Content";
+import Link from "next/link";
 
 interface Movie {
   id: number;
@@ -31,11 +32,13 @@ export const ContentList: React.FC = () => {
       <div className={styles.topSearches}>Top Searches</div>
       <div className={styles.container}>
         {movies.map((movie) => (
-          <Content
+          <Link
+            href={`/detail/${movie.id}`}
             key={movie.id}
-            poster={movie.poster_path}
-            title={movie.title}
-          />
+            style={{ textDecoration: "none" }}
+          >
+            <Content poster={movie.poster_path} title={movie.title} />
+          </Link>
         ))}
       </div>
     </>
