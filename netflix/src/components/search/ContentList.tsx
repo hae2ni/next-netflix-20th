@@ -28,15 +28,16 @@ export const ContentList: React.FC = () => {
 
   return (
     <>
-      <p className={styles.topSearches}>Top Searches</p>
-      {movies.map((movie) => (
-        <Content
-          key={movie.id}
-          poster={movie.poster_path}
-          title={movie.title}
-        />
-      ))}
-      <div>ContentList</div>
+      <div className={styles.topSearches}>Top Searches</div>
+      <div className={styles.container}>
+        {movies.map((movie) => (
+          <Content
+            key={movie.id}
+            poster={movie.poster_path}
+            title={movie.title}
+          />
+        ))}
+      </div>
     </>
   );
 };

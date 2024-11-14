@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
   display: "flex",
   alignItems: "center",
-  width: "100%",
+  width: "100vw",
   gap: "7px",
   backgroundColor: "#424242",
 
@@ -17,4 +17,9 @@ export const textplaycontainer = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+
+  width: "210px",
+  height: "30px",
+
+  fontWeight: 400,
 });

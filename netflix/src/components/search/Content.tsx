@@ -14,7 +14,7 @@ export const Content = ({ title, poster }: ContentPropsTypes) => {
   const imageUrl = `${IMAGE_BASE_URL}${poster}`;
 
   return (
-    <li className={styles.container}>
+    <div className={styles.container}>
       <Image
         layout="fixed"
         alt="포스터"
@@ -27,6 +27,6 @@ export const Content = ({ title, poster }: ContentPropsTypes) => {
         {title}
         <Image src={playIcon} alt="재생" />
       </span>
-    </li>
+    </div>
   );
 };
