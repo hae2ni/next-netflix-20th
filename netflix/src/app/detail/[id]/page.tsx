@@ -4,10 +4,10 @@ import { useParams } from "next/navigation";
 import { PlayButton } from "@/components/detail/PlayButton";
 import { page } from "@/styles/globalTheme.css";
 import { useEffect, useState } from "react";
-import { fetchPopular } from "@/api/MovieList";
 import { Movie } from "@/types/movieInterface";
 import * as styles from "@/styles/detail/text.css";
 import Image from "next/image";
+import { fetchSearch } from "@/api/searchApi";
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500/";
 
@@ -19,7 +19,7 @@ export default function Detail() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPopular();
+        const data = await fetchSearch();
         const selectedMovie = data.find((movie) => Number(id) == movie.id);
         if (selectedMovie) {
           setMovie(selectedMovie);

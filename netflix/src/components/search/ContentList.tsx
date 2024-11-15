@@ -1,39 +1,56 @@
 "use client";
-import { fetchPopular } from "@/api/MovieList";
 import * as styles from "@/styles/search/contentList.css";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Content } from "./Content";
 import Link from "next/link";
 import { Movie } from "@/types/movieInterface";
 import { useSearchStore } from "@/utils/search/useStore";
+import { fetchSearch } from "@/api/searchApi";
 
 export const ContentList: React.FC = () => {
   const { searchText } = useSearchStore();
+  const [page, setPage] = useState(1);
+  const [morePage, setMorePage] = useState(true);
   const [movies, setMovies] = useState<Movie[]>([]);
 
-  useEffect(() => {
+  const unlimitedScroll = useCallback(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchPopular();
+        const data = await fetchSearch(page);
         const filteredData = searchText
           ? data.filter((movie) =>
               movie.title.toLowerCase().includes(searchText.toLowerCase()),
             )
           : data;
 
-        setMovies(filteredData);
+        setMovies((prev) => [...prev, ...filteredData]);
+
+        data.length === 0 ? setMorePage(false) : setPage((prev) => prev + 1);
       } catch (error) {
         console.error("검색리스트 실패", error);
       }
     };
-
     fetchData();
-  }, [searchText]);
+  }, [page, searchText]);
 
   useEffect(() => {
-    console.log("확인", movies);
-    console.log("searchText", searchText);
-  });
+    unlimitedScroll();
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        window.innerHeight + document.documentElement.scrollTop >=
+          document.documentElement.offsetHeight - 50 &&
+        morePage
+      ) {
+        unlimitedScroll();
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [unlimitedScroll, morePage]);
 
   return (
     <>
