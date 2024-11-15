@@ -20,10 +20,6 @@ export const SearchBar = () => {
     setSearch("");
   }, [setSearch]);
 
-  useEffect(() => {
-    console.log("search", searchText);
-  });
-
   return (
     <div className={style.container}>
       <Image className={style.icon} src={searchIcon} alt="검색" />
