@@ -9,48 +9,28 @@ import { fetchSearch } from "@/api/searchApi";
 
 export const ContentList: React.FC = () => {
   const { searchText } = useSearchStore();
-  const [page, setPage] = useState(1);
-  const [morePage, setMorePage] = useState(true);
   const [movies, setMovies] = useState<Movie[]>([]);
 
-  const unlimitedScroll = useCallback(() => {
+  const fetchMovies = useCallback(() => {
     const fetchData = async () => {
       try {
-        const data = await fetchSearch(page);
+        const data = await fetchSearch(1);
         const filteredData = searchText
           ? data.filter((movie) =>
               movie.title.toLowerCase().includes(searchText.toLowerCase()),
             )
           : data;
-
-        setMovies((prev) => [...prev, ...filteredData]);
-
-        data.length === 0 ? setMorePage(false) : setPage((prev) => prev + 1);
+        setMovies(filteredData);
       } catch (error) {
         console.error("검색리스트 실패", error);
       }
     };
     fetchData();
-  }, [page, searchText]);
+  }, [searchText]);
 
   useEffect(() => {
-    unlimitedScroll();
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (
-        window.innerHeight + document.documentElement.scrollTop >=
-          document.documentElement.offsetHeight - 50 &&
-        morePage
-      ) {
-        unlimitedScroll();
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [unlimitedScroll, morePage]);
+    fetchMovies();
+  }, [searchText]);
 
   return (
     <>
