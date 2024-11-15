@@ -3,7 +3,7 @@ import { style } from "@vanilla-extract/css";
 export const container = style({
   display: "flex",
   alignItems: "center",
-  width: "100vw",
+  width: "400px",
   gap: "7px",
   backgroundColor: "#424242",
 
