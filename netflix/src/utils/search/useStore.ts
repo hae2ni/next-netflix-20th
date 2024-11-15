@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
-export const useSearchStore = create((set) => ({
+interface SearchStoreState {
+  searchText: string;
+  setSearch: (text: string) => void;
+}
+
+export const useSearchStore = create<SearchStoreState>((set) => ({
   searchText: "",
   setSearch: (movie: string) => set({ searchText: movie }),
 }));
