@@ -1,9 +1,13 @@
-import NavBar from '@/components/common/navBar'
+import NavBar from "@/components/common/navBar";
+import { PlayButton } from "@/components/detail/PlayButton";
+import { Text } from "@/components/detail/Text";
 
 export default function More() {
-    return (
-        <div>
-            <NavBar />
-        </div>
-    )
+  return (
+    <div>
+      <PlayButton />
+      <Text />
+      <NavBar />
+    </div>
+  );
 }
