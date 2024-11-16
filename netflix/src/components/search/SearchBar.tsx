@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback  } from "react";
 import Image from "next/image";
 import * as style from "@/styles/search/searchBar.css";
 import searchIcon from "/public/svgs/search/searchbar.svg";
